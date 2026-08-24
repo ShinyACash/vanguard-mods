@@ -18,7 +18,7 @@ idf_component_register(
     SRCS ${VANGUARD_SOURCES}
     INCLUDE_DIRS "." "rf" "display" "storage" "power" "input" "leds" "audio"
                  "ui" "perf" "settings" "contacts" "music" "boot" "games"
-                 "challenges" "peerdrop" "satellite" "radiochat" "glitch" "../include"
+                 "challenges" "peerdrop" "satellite" "radiochat" "glitch" "girlfriend" "../include"
     EMBED_FILES ${BOOT_ANIM_FRAME_FILES}
     REQUIRES espressif__arduino-esp32 jgromes__radiolib driver esp_timer
              Adafruit_GFX_Library Adafruit_ST7735_and_ST7789_Library

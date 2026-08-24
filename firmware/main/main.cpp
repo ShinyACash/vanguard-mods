@@ -35,6 +35,7 @@
 #include "settings/badge_id.h"
 #include "radiochat/radio_chat.h"
 #include "glitch/glitch.h"
+#include "girlfriend/girlfriend.h"
 
 static AppState s_state = AppState::Boot;
 
@@ -79,6 +80,7 @@ static void enterState(AppState s) {
         case AppState::RadioChat: radiochat::enter(); break;
         case AppState::ShipBattle: games::ship_battle::enter(); break;
         case AppState::MissionComplete: mission_complete::enter(); break;
+        case AppState::Girlfriend: girlfriend::enter(); break;
         default: break;
     }
 }
@@ -103,6 +105,7 @@ static AppState runFrame(AppState s) {
         case AppState::ShipBattle: return games::ship_battle::frame();
         case AppState::MissionComplete: return mission_complete::frame();
         case AppState::Glitched: return glitch::frame();
+        case AppState::Girlfriend: return girlfriend::frame();
         default: return s;
     }
 }
