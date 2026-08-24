@@ -4,6 +4,11 @@ import os
 
 def convert(filename, out_filename):
     img = Image.open(filename).convert("RGB")
+    
+    # Scale down the image so it fits nicely on a 320x240 screen (max 100x100 bounding box)
+    # Using NEAREST to preserve crisp pixel-art edges
+    img.thumbnail((100, 100), Image.Resampling.NEAREST)
+    
     width, height = img.size
     
     with open(out_filename, "w") as f:

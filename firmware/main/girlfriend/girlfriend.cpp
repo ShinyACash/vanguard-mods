@@ -99,7 +99,7 @@ AppState frame() {
         ui::widgets::clearScreen(tft);
         
         // Draw Header
-        ui::widgets::header(tft, ui::Rect{0, 0, (int16_t)cfg::DISPLAY_WIDTH, (int16_t)theme::LIST_START_Y}, "Girlfriend");
+        ui::widgets::header(tft, ui::Rect{0, 0, (int16_t)cfg::DISPLAY_WIDTH, (int16_t)theme::LIST_START_Y}, "Tsundere Miku");
         
         tft.drawRGBBitmap((cfg::DISPLAY_WIDTH - MIKU_WIDTH) / 2, 35, MIKU_BITMAP, MIKU_WIDTH, MIKU_HEIGHT);
         
