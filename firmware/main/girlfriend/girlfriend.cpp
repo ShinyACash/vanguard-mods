@@ -11,6 +11,7 @@
 
 #include <Arduino.h>
 #include <NimBLEDevice.h>
+#include "miku_data.h"
 #include <string>
 
 namespace girlfriend {
@@ -27,8 +28,11 @@ static int s_mood = 0;
 static bool s_dirty = true;
 static bool s_bleInit = false;
 
+// High-pitched, fast synthetic chirps to mimic Miku's vocaloid voice
 static const audio::Note kVoiceNotes[] = {
-    { 2000, 50 }, { 2500, 50 }, { 2200, 50 }, { 2800, 80 }
+    { 2800, 40 }, { 3136, 40 }, { 3520, 40 }, { 0, 20 },
+    { 3136, 40 }, { 3520, 40 }, { 4186, 60 }, { 3951, 80 },
+    { 4186, 100 }
 };
 
 class GFCallbacks : public NimBLECharacteristicCallbacks {
@@ -95,13 +99,9 @@ AppState frame() {
         ui::widgets::clearScreen(tft);
         
         // Draw Header
-        ui::widgets::header(tft, ui::Rect{0, 0, (int16_t)cfg::DISPLAY_WIDTH, (int16_t)theme::LIST_START_Y}, "AI Girlfriend");
+        ui::widgets::header(tft, ui::Rect{0, 0, (int16_t)cfg::DISPLAY_WIDTH, (int16_t)theme::LIST_START_Y}, "Girlfriend");
         
-        tft.setCursor(10, 50);
-        tft.setTextColor(theme::COLOR_ACCENT_DARK);
-        tft.setTextSize(3);
-        tft.setCursor(cfg::DISPLAY_WIDTH / 2 - 50, 60);
-        tft.print("< GF >");
+        tft.drawRGBBitmap((cfg::DISPLAY_WIDTH - MIKU_WIDTH) / 2, 35, MIKU_BITMAP, MIKU_WIDTH, MIKU_HEIGHT);
         
         // Draw Message
         tft.setTextColor(theme::COLOR_TEXT);
