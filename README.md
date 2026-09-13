@@ -1,4 +1,7 @@
-# Vanguard — Portable Hardware Security Laboratory
+# Vanguard — Portable Hardware Security Laboratory (Custom Additions)
+
+> **Note:** This repository contains goofy additions, extra scripts, and custom features added to the existing Vanguard firmware (originally created by Amrita's InCTF team).
+
 
 Vanguard is a handheld hardware security platform: a self-contained,
 battery-powered device built around an ESP32-S3 that doubles as a badge, a
