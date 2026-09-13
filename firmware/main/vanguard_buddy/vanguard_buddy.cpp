@@ -1,4 +1,4 @@
-#include "girlfriend.h"
+#include "vanguard_buddy.h"
 #include "../ui/renderer.h"
 #include "../ui/widgets.h"
 #include "../ui/theme.h"
@@ -11,10 +11,10 @@
 
 #include <Arduino.h>
 #include <NimBLEDevice.h>
-#include "miku_data.h"
+#include "buddy_data.h"
 #include <string>
 
-namespace girlfriend {
+namespace vanguard_buddy {
 
 static const char* SERVICE_UUID = "4fafc201-1fb5-459e-8fcc-c5c9c331914b";
 static const char* CHAR_UUID = "beb5483e-36e1-4688-b7f5-ea07361b26a8";
@@ -28,7 +28,7 @@ static int s_mood = 0;
 static bool s_dirty = true;
 static bool s_bleInit = false;
 
-// High-pitched, fast synthetic chirps to mimic Miku's vocaloid voice
+// High-pitched, fast synthetic chirps to mimic Vanguard Buddy's voice
 static const audio::Note kVoiceNotes[] = {
     { 2800, 40 }, { 3136, 40 }, { 3520, 40 }, { 0, 20 },
     { 3136, 40 }, { 3520, 40 }, { 4186, 60 }, { 3951, 80 },
@@ -69,7 +69,7 @@ void enter() {
     led::stop(); // stop any other playing effects
     
     if (!s_bleInit) {
-        NimBLEDevice::init("Vanguard-GF");
+        NimBLEDevice::init("Vanguard-Buddy");
         s_server = NimBLEDevice::createServer();
         NimBLEService* pService = s_server->createService(SERVICE_UUID);
         s_char = pService->createCharacteristic(
@@ -99,9 +99,9 @@ AppState frame() {
         ui::widgets::clearScreen(tft);
         
         // Draw Header
-        ui::widgets::header(tft, ui::Rect{0, 0, (int16_t)cfg::DISPLAY_WIDTH, (int16_t)theme::LIST_START_Y}, "Tsundere Miku");
+        ui::widgets::header(tft, ui::Rect{0, 0, (int16_t)cfg::DISPLAY_WIDTH, (int16_t)theme::LIST_START_Y}, "Vanguard Buddy");
         
-        tft.drawRGBBitmap((cfg::DISPLAY_WIDTH - MIKU_WIDTH) / 2, 35, MIKU_BITMAP, MIKU_WIDTH, MIKU_HEIGHT);
+        tft.drawRGBBitmap((cfg::DISPLAY_WIDTH - BUDDY_WIDTH) / 2, 35, BUDDY_BITMAP, BUDDY_WIDTH, BUDDY_HEIGHT);
         
         // Draw Message
         tft.setTextColor(theme::COLOR_TEXT);
@@ -121,7 +121,7 @@ AppState frame() {
         leds::setChainLed(i, i <= s_mood);
     }
     
-    return AppState::Girlfriend;
+    return AppState::VanguardBuddy;
 }
 
-} // namespace girlfriend
+} // namespace vanguard_buddy

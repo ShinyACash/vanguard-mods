@@ -2,9 +2,9 @@
 
 #include "../../include/state.h"
 
-namespace girlfriend {
+namespace vanguard_buddy {
 
 void enter();
 AppState frame();
 
-} // namespace girlfriend
+} // namespace vanguard_buddy

@@ -26,7 +26,7 @@ constexpr uint8_t kCriticalBatteryPercent = 5;
 // ---- Main menu ----
 static const char* kMainItems[] = {
     "Challenges", "PeerDrop (BLE)", "Games", "Music Player",
-    "Settings & Diagnostics", "Contacts Manager", "Tsundere Miku"
+    "Settings & Diagnostics", "Contacts Manager", "Vanguard Buddy"
 };
 static const int kMainCount = 7;
 
@@ -253,7 +253,7 @@ AppState mainMenuFrame() {
             case 3: return AppState::MusicPlayer;
             case 4: return AppState::Settings;
             case 5: return AppState::Contacts;
-            case 6: return AppState::Girlfriend;
+            case 6: return AppState::VanguardBuddy;
         }
     }
     return AppState::MainMenu;

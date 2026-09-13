@@ -22,5 +22,5 @@ enum class AppState {
     ShipBattle,  // LoRa multiplayer game, lives under the Games menu (see main/games/ship_battle.*)
     MissionComplete, // full-screen takeover once all four Challenge levels are done
     Glitched, // "Badge Attack" takeover -- see main/glitch/glitch.h; returns to whatever state it interrupted, unlike MissionComplete
-    Girlfriend, // AI Girlfriend mode via BLE
+    VanguardBuddy, // Vanguard Buddy mode via BLE
 };

@@ -15,9 +15,9 @@ def convert(filename, out_filename):
         f.write("#pragma once\n")
         f.write("#include <cstdint>\n")
         f.write("#include <pgmspace.h>\n\n")
-        f.write(f"constexpr int MIKU_WIDTH = {width};\n")
-        f.write(f"constexpr int MIKU_HEIGHT = {height};\n\n")
-        f.write(f"constexpr uint16_t MIKU_BITMAP[{width * height}] PROGMEM = {{\n  ")
+        f.write(f"constexpr int BUDDY_WIDTH = {width};\n")
+        f.write(f"constexpr int BUDDY_HEIGHT = {height};\n\n")
+        f.write(f"constexpr uint16_t BUDDY_BITMAP[{width * height}] PROGMEM = {{\n  ")
         
         count = 0
         for y in range(height):
@@ -37,6 +37,6 @@ if __name__ == "__main__":
         sys.exit(1)
         
     project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    out_path = os.path.join(project_root, "firmware", "main", "girlfriend", "miku_data.h")
+    out_path = os.path.join(project_root, "firmware", "main", "vanguard_buddy", "buddy_data.h")
     convert(sys.argv[1], out_path)
     print(f"Generated {out_path}!")
